@@ -35,8 +35,16 @@ const JobsProvider = ({ children }: { children: ReactNode }) => {
   const [filteredJobs, setFilteredJobs] = useState([] as IJobRes[]);
 
   useEffect(() => {
+    const filterResults = (labels: string[], jobs: IJobRes[]) => {
+      const hasLabels = jobs.filter((job) => {
+        const jobLabels = job?.labels?.map((label) => label.name);
+      });
+      return hasLabels;
+    };
+
+    console.log(filterResults(labels, jobs));
     setFilteredJobs(filteredJobs);
-  }, [filteredJobs]);
+  }, [filteredJobs, checked]);
 
   return (
     <JobsContext.Provider
