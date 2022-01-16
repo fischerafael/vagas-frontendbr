@@ -28,7 +28,7 @@ export const Main = ({ jobs }: { jobs: IJobRes[] }) => {
       h="full"
       overflowY="scroll"
     >
-      {filteredJobs?.map((job) => (
+      {jobs?.map((job) => (
         <JobCard onClick={() => onCardClick(job)} key={job.id} job={job} />
       ))}
     </SimpleGrid>

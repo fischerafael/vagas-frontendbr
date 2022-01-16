@@ -10,6 +10,18 @@ interface Props {
 }
 
 export const PageHome = ({ jobs }: Props) => {
+  const { setFilteredJobs, filteredJobs } = useJobs();
+  console.log("filtered", filteredJobs);
+
+  const jobby = jobs;
+
+  useEffect(() => {
+    if (!jobby) return;
+    console.log("jobby", jobby);
+
+    setFilteredJobs(jobby);
+  }, []);
+
   return (
     <HStack
       w="full"
