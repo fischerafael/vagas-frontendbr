@@ -5,20 +5,15 @@ import { IJobRes } from "../../data/interfaces";
 import { useJobs } from "../../hooks/useJobs";
 import { JobCard } from "../JobCard";
 
-export const Main = ({ jobs }: { jobs: IJobRes[] }) => {
+export const Main = () => {
   const { push } = useRouter();
+  const { jobs } = useJobs();
 
   const onCardClick = (job: IJobRes) => {
     const { html_url } = job;
     if (html_url) return;
     push(html_url as string);
   };
-
-  const { setFilteredJobs, filteredJobs } = useJobs();
-
-  useEffect(() => {
-    setFilteredJobs(jobs);
-  }, [jobs]);
 
   return (
     <SimpleGrid

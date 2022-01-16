@@ -4,19 +4,16 @@ import { Main } from "../components/Main";
 import { Sidebar } from "../components/Sidebar";
 import { IJobRes } from "../data/interfaces";
 import { useJobs } from "../hooks/useJobs";
-import { getUniqueJobLabels } from "../utils/getJobLabels";
 
 interface Props {
   jobs: IJobRes[];
 }
 
-export const PageHome = ({ jobs }: Props) => {
-  // const { setFilteredJobs, filteredJobs } = useJobs();
-  // console.log("filtered", filteredJobs);
-
-  const labels = getUniqueJobLabels(jobs);
-
-  console.log("ALL LABELS ", labels);
+export const PageHome = ({ jobs: jobsRes }: Props) => {
+  const { jobs, setJobs } = useJobs();
+  useEffect(() => {
+    setJobs(jobsRes);
+  }, [jobsRes]);
 
   return (
     <HStack
@@ -28,7 +25,7 @@ export const PageHome = ({ jobs }: Props) => {
       fontFamily="sans-serif"
     >
       <Sidebar />
-      <Main jobs={jobs} />
+      <Main />
     </HStack>
   );
 };
