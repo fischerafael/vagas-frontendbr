@@ -13,7 +13,7 @@ export const Main = ({ jobs }: { jobs: IJobRes[] }) => {
     push(html_url);
   };
 
-  const [filteredJobs, setFilteredJobs] = useState([] as IJobRes[]);
+  const { setFilteredJobs, filteredJobs } = useJobs();
 
   useEffect(() => {
     setFilteredJobs(jobs);

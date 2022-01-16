@@ -1,10 +1,35 @@
-import { useEffect, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { IJobRes } from "../data/interfaces";
 
-export const useJobs = (jobs?: IJobRes[]) => {
-  const resJobs = jobs;
+interface Props {
+  filteredJobs: IJobRes[];
+  setFilteredJobs: (job: any) => void;
+}
 
-  console.log("jobs", resJobs);
+const JobsContext = createContext({} as Props);
 
-  return { resJobs };
+const JobsProvider = ({ children }: { children: ReactNode }) => {
+  const [filteredJobs, setFilteredJobs] = useState([] as IJobRes[]);
+
+  useEffect(() => {
+    setFilteredJobs(filteredJobs);
+  }, [filteredJobs]);
+
+  return (
+    <JobsContext.Provider value={{ filteredJobs, setFilteredJobs }}>
+      {children}
+    </JobsContext.Provider>
+  );
 };
+
+const useJobs = () => {
+  return useContext(JobsContext);
+};
+
+export { JobsProvider, useJobs };
