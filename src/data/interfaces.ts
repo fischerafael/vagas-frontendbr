@@ -1,17 +1,17 @@
 export interface IJobRes {
-  url: string;
-  html_url: string;
-  id: number;
-  number: number;
-  title: string;
-  user: IUser;
-  labels: ILabel[];
-  state: string;
-  locked: boolean;
-  created_at: string;
-  updated_at: string;
-  closed_at: string;
-  body: string;
+  url?: string;
+  html_url?: string;
+  id?: number;
+  number?: number;
+  title?: string;
+  user?: IUser;
+  labels?: ILabel[];
+  state?: string;
+  locked?: boolean;
+  created_at?: string;
+  updated_at?: string;
+  closed_at?: string;
+  body?: string;
 }
 
 export interface IUser {
