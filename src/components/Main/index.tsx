@@ -10,7 +10,8 @@ export const Main = ({ jobs }: { jobs: IJobRes[] }) => {
 
   const onCardClick = (job: IJobRes) => {
     const { html_url } = job;
-    push(html_url);
+    if (html_url) return;
+    push(html_url as string);
   };
 
   const { setFilteredJobs, filteredJobs } = useJobs();
