@@ -20,5 +20,5 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
     "public, s-maxage=10, stale-while-revalidate=59"
   );
 
-  return { props: { jobs: data || [] }, revalidate: 60 };
+  return { props: { jobs: data || [] } };
 };
