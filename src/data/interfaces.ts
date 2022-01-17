@@ -5,7 +5,7 @@ export interface IJobRes {
   number?: number;
   title?: string;
   user?: IUser;
-  labels?: ILabel[];
+  labels: ILabel[];
   state?: string;
   locked?: boolean;
   created_at?: string;

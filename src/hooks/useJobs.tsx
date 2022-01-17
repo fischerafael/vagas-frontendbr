@@ -6,6 +6,7 @@ import {
   useState,
 } from "react";
 import { IJobRes } from "../data/interfaces";
+import { formatLabels } from "../utils/formatUniqueLabels";
 import { getUniqueJobLabels } from "../utils/getJobLabels";
 
 interface Props {
@@ -26,9 +27,11 @@ const JobsProvider = ({ children }: { children: ReactNode }) => {
   const [labels, setLabels] = useState([] as string[]);
   const [checked, setChecked] = useState([] as string[]);
 
+  console.log(checked);
+
   useEffect(() => {
     if (!jobs) return;
-    const labels = getUniqueJobLabels(jobs);
+    const labels = formatLabels(jobs);
     setLabels(labels);
   }, [jobs]);
 
